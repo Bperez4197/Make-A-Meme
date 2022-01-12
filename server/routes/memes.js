@@ -7,8 +7,10 @@ import {
   likeMeme,
 } from "../controllers/memeController.js";
 
+//express.Router() is a complete middleware and routing system
 const router = express.Router();
 
+// Call the http requests on router and pass in a url and a function that performs the logic
 router.get("/", getMemes);
 router.post("/", postMeme);
 router.patch("/:id", updateMeme);
