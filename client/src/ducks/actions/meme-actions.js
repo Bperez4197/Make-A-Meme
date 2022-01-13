@@ -3,17 +3,17 @@ import { FETCH_ALL, UPDATE, DELETE, CREATE } from "../../constants/actionTypes";
 
 export const getAllMemes = () => async (dispatch) => {
   try {
-    const { allMemes } = await api.fetchMemes();
-    dispatch({ type: FETCH_ALL, payload: allMemes });
+    const { data } = await api.fetchMemes();
+    dispatch({ type: FETCH_ALL, payload: data });
   } catch (err) {
-    res.status(404).json({ message: err });
+    console.log(err.message);
   }
 };
 
 export const createMeme = (memeData) => async (dispatch) => {
   try {
-    const newMeme = await api.createMeme(memeData);
-    dispatch({ type: CREATE, payload: newMeme });
+    const { data } = await api.createMeme(memeData);
+    dispatch({ type: CREATE, payload: data });
   } catch (err) {
     console.log(err);
   }
@@ -21,10 +21,10 @@ export const createMeme = (memeData) => async (dispatch) => {
 
 export const updateMeme = (id, memeData) => async (dispatch) => {
   try {
-    const updatedMeme = await api.updateMeme(id, memeData);
+    const { updatedMeme } = await api.updateMeme(id, memeData);
     dispatch({ type: UPDATE, payload: updatedMeme });
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
   }
 };
 

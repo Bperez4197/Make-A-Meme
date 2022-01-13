@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Memes from "../../components/Memes/Memes";
 import MemeForm from "../../components/MemeForm/MemeForm";
+import { getAllMemes } from "../../ducks/actions/meme-actions";
+import { useDispatch } from "react-redux";
 
 import "./styles.scss";
 
 export default function MemesPage() {
   const [searchField, setSearchField] = useState("");
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     setSearchField(event.target.value);
@@ -20,6 +23,10 @@ export default function MemesPage() {
   const closeModal = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    dispatch(getAllMemes());
+  }, [dispatch]);
 
   useEffect(() => {
     console.log(searchField);
@@ -41,7 +48,10 @@ export default function MemesPage() {
         </button>
       </div>
       <Memes search={searchField} />
-      <div className={`${open ? "overlay" : "hidden"}`}></div>
+      <div
+        className={`${open ? "overlay" : "hidden"}`}
+        onClick={open ? () => closeModal() : () => {}}
+      ></div>
       {open ? <MemeForm closeModal={closeModal} /> : ""}
     </div>
   );

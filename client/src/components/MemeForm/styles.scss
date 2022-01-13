@@ -17,16 +17,40 @@ $nav-background-color: #161b22;
     border: 1px solid rgba(117, 115, 115, 0.582);
     border-radius: 9px;
     margin: 0 auto;
-    z-index: 5;
+    z-index: 6;
+    transform: translateY(-275%);
 
     .form-labels {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding-top: 56px;
-      padding-bottom: 65px;
+      padding-top: 55px;
+      padding-bottom: 20px;
       align-items: center;
       margin-right: 5px;
+
+      .clear-btn {
+        height: 25px;
+        width: 50px;
+        background-color: $btn-background;
+        border: 1px solid $btn-border-color;
+        border-radius: 25px;
+        color: white;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        bottom: 5px;
+        font-family: sans-serif;
+        font-weight: 25;
+        margin-left: 5px;
+        margin-top: 5px;
+
+        &:hover {
+          background-color: $btn-hover-background;
+        }
+      }
 
       .bottomTextLabel {
         padding-left: 20px;
@@ -54,12 +78,14 @@ $nav-background-color: #161b22;
       .closeIcon {
         padding-left: 270px;
         padding-top: 5px;
+        cursor: pointer;
+        color: green;
       }
     }
 
     #submit {
       margin-right: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       height: 25px;
       background-color: $btn-background;
       border: 1px solid $btn-border-color;
@@ -69,6 +95,7 @@ $nav-background-color: #161b22;
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
 
       &:hover {
         background-color: $btn-hover-background;

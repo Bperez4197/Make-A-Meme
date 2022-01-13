@@ -1,21 +1,30 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { CircularProgress } from "@material-ui/core";
-import Meme from "./Meme/Meme";
+import { Meme } from "./Meme/Meme";
 
 import "./styles.scss";
 
-export default function Memes({ search }) {
+export const Memes = ({ search }) => {
   const memes = useSelector((state) => state.memes);
-  const filteredMemes = memes.filter((meme) => !meme.creator.contains(search));
+  // const filteredMemes = memes.filter((meme) => !meme.creator.includes(search));
 
   return (
     <div className="memes-container">
-      {!filteredMemes.length ? (
+      {!memes.length ? (
         <CircularProgress />
       ) : (
-        filteredMemes.map((meme) => <Meme memeData={meme} />)
+        memes.map((meme) => {
+          console.log(meme);
+          return (
+            <div key={meme._id} className="meme-container">
+              <Meme memeData={meme} />
+            </div>
+          );
+        })
       )}
     </div>
   );
-}
+};
+
+export default Memes;

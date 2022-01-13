@@ -1,10 +1,12 @@
 import React from "react";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import DeleteIcon from "@mui/icons-material/Delete";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import EditIcon from "@mui/icons-material/Edit";
 import moment from "moment";
 
-export default function Meme(memeData) {
+import "./styles.scss";
+
+export const Meme = ({ memeData }) => {
   const {
     creator,
     bottomText,
@@ -16,33 +18,34 @@ export default function Meme(memeData) {
     likeCount,
   } = memeData;
   return (
-    <div className="meme-container">
-      <div className="actual-meme" style={{ backgroundImage: `url(${image})` }}>
+    <div>
+      <div id="actual-meme" style={{ backgroundImage: `url(${image})` }}>
         <span>{topText}</span>
         <span>{bottomText}</span>
       </div>
       <div className="meme-data-container">
-        <div>
-          <div>
-            <h5>Title: {name}</h5>
-            <h6>Created By: {creator}</h6>
-            <span>{createdAt}</span>
-            <span>{tags}</span>
-          </div>
-          <div>
-            {" "}
-            <MoreHorizIcon />
-          </div>
+        <div className="meme-data">
+          <h5>Title: {name}</h5>
+          <span className="time">{moment(createdAt).fromNow()}</span>
+          <h6>Created By: {creator}</h6>
+          <span id="tags">{tags.map((tag) => `#${tag} `)}</span>
         </div>
-        <div>
-          <span>
-            <ThumbUpAltIcon /> &nbsp; Like &nbsp; {likeCount}
+        <div className="meme-btns">
+          <span className="meme-btn" onClick={() => {}}>
+            <ThumbUpAltIcon />
+            &nbsp; Like &nbsp; {likeCount}
           </span>
-          <span>
-            <DeleteIcon /> &nbsp; Delete
+          <span className="meme-btn" onClick={() => {}}>
+            {" "}
+            <EditIcon />
+            &nbsp; Edit
+          </span>
+          <span className="meme-btn" onClick={() => {}}>
+            <DeleteIcon />
+            &nbsp; Delete
           </span>
         </div>
       </div>
     </div>
   );
-}
+};
