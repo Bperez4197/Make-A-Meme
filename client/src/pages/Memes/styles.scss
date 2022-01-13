@@ -1,0 +1,73 @@
+$font: "Roboto", sans-serif;
+$main-font-weight: 100;
+$font-color: rgba(240, 246, 252, 0.829);
+$btn-background: rgba(17, 116, 17, 0.404);
+$btn-border-color: rgba(144, 238, 144, 0.541);
+$btn-hover-background: rgba(5, 146, 5, 0.801);
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin: 0 auto;
+  font-family: $font;
+  color: $font-color;
+  font-weight: $main-font-weight;
+
+  .page-header {
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid rgba(117, 115, 115, 0.582);
+    margin-bottom: 10px;
+
+    #searchField {
+      background-color: transparent;
+      border: 2px solid rgba(117, 115, 115, 0.288);
+      border-radius: 11px;
+      font-size: 20px;
+      width: 40%;
+      height: 50px;
+      margin-right: 3%;
+      color: $font-color;
+      padding-left: 15px;
+
+      &::placeholder {
+        color: $font-color;
+      }
+    }
+
+    .create-btn {
+      height: 40px;
+      width: 37%;
+      background-color: $btn-background;
+      border: 1px solid $btn-border-color;
+      border-radius: 11px;
+      color: white;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        background-color: $btn-hover-background;
+      }
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 4;
+  }
+}

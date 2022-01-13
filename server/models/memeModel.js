@@ -8,7 +8,7 @@ const memeSchema = mongoose.Schema({
   name: String,
   tags: [String],
   topText: String,
-  createAt: {
+  createdAt: {
     type: Date,
     default: new Date(),
   },
