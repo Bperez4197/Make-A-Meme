@@ -7,15 +7,16 @@ import "./styles.scss";
 
 export const Memes = ({ search }) => {
   const memes = useSelector((state) => state.memes);
-  // const filteredMemes = memes.filter((meme) => !meme.creator.includes(search));
+  const filteredMemes = memes.filter((meme) =>
+    meme.creator.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className="memes-container">
-      {!memes.length ? (
+      {!filteredMemes.length ? (
         <CircularProgress />
       ) : (
-        memes.map((meme) => {
-          console.log(meme);
+        filteredMemes.map((meme) => {
           return (
             <div key={meme._id} className="meme-container">
               <Meme memeData={meme} />

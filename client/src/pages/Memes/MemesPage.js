@@ -28,10 +28,6 @@ export default function MemesPage() {
     dispatch(getAllMemes());
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log(searchField);
-  }, [searchField]);
-
   return (
     <div className="page-wrapper">
       <div className="page-header">
@@ -41,6 +37,7 @@ export default function MemesPage() {
           name="searchField"
           id="searchField"
           onChange={handleChange}
+          value={searchField}
         />
         <button className="create-btn" onClick={openModal}>
           {" "}
