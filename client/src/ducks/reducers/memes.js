@@ -9,8 +9,10 @@ export default (memes = [], action) => {
         meme._id === action.payload.id ? action.payload : meme
       );
     case DELETE:
-      return memes.filter((meme) => meme._id != action.payload);
+      return memes.filter((meme) => meme._id !== action.payload);
     case CREATE:
       return [...memes, action.payload];
+    default:
+      return memes;
   }
 };
