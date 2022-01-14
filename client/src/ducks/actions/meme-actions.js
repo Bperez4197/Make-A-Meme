@@ -21,8 +21,8 @@ export const createMeme = (memeData) => async (dispatch) => {
 
 export const updateMeme = (id, memeData) => async (dispatch) => {
   try {
-    const { updatedMeme } = await api.updateMeme(id, memeData);
-    dispatch({ type: UPDATE, payload: updatedMeme });
+    const { data } = await api.updateMeme(id, memeData);
+    dispatch({ type: UPDATE, payload: data });
   } catch (err) {
     console.log(err.message);
   }

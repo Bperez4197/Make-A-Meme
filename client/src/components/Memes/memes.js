@@ -5,7 +5,7 @@ import { Meme } from "./Meme/Meme";
 
 import "./styles.scss";
 
-export const Memes = ({ search }) => {
+export const Memes = ({ search, openModal }) => {
   const memes = useSelector((state) => state.memes);
   const filteredMemes = memes.filter((meme) =>
     meme.creator.toLowerCase().includes(search.toLowerCase())
@@ -19,7 +19,7 @@ export const Memes = ({ search }) => {
         filteredMemes.map((meme) => {
           return (
             <div key={meme._id} className="meme-container">
-              <Meme memeData={meme} />
+              <Meme openModal={openModal} memeData={meme} />
             </div>
           );
         })

@@ -3,10 +3,12 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import moment from "moment";
+import { deleteMeme, likeMeme } from "../../../ducks/actions/meme-actions";
+import { useDispatch } from "react-redux";
 
 import "./styles.scss";
 
-export const Meme = ({ memeData }) => {
+export const Meme = ({ memeData, openModal }) => {
   const {
     creator,
     bottomText,
@@ -17,6 +19,8 @@ export const Meme = ({ memeData }) => {
     createdAt,
     likeCount,
   } = memeData;
+  const dispatch = useDispatch();
+
   return (
     <div>
       <div id="actual-meme" style={{ backgroundImage: `url(${image})` }}>
@@ -31,16 +35,22 @@ export const Meme = ({ memeData }) => {
           <span id="tags">{tags.map((tag) => `#${tag} `)}</span>
         </div>
         <div className="meme-btns">
-          <span className="meme-btn" onClick={() => {}}>
+          <span
+            className="meme-btn"
+            onClick={() => dispatch(likeMeme(memeData._id))}
+          >
             <ThumbUpAltIcon />
             &nbsp; Like &nbsp; {likeCount}
           </span>
-          <span className="meme-btn" onClick={() => {}}>
+          <span className="meme-btn" onClick={() => openModal(memeData._id)}>
             {" "}
             <EditIcon />
             &nbsp; Edit
           </span>
-          <span className="meme-btn" onClick={() => {}}>
+          <span
+            className="meme-btn"
+            onClick={() => dispatch(deleteMeme(memeData._id))}
+          >
             <DeleteIcon />
             &nbsp; Delete
           </span>

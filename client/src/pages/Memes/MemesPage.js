@@ -9,6 +9,7 @@ import "./styles.scss";
 
 export default function MemesPage() {
   const [searchField, setSearchField] = useState("");
+  const [currentId, setCurrentId] = useState(null);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -16,17 +17,19 @@ export default function MemesPage() {
     setSearchField(event.target.value);
   };
 
-  const openModal = () => {
+  const openModal = (id) => {
     setOpen(true);
+    setCurrentId(id);
   };
 
   const closeModal = () => {
     setOpen(false);
+    setCurrentId(null);
   };
 
   useEffect(() => {
     dispatch(getAllMemes());
-  }, [dispatch]);
+  }, [currentId, dispatch]);
 
   return (
     <div className="page-wrapper">
@@ -39,17 +42,25 @@ export default function MemesPage() {
           onChange={handleChange}
           value={searchField}
         />
-        <button className="create-btn" onClick={openModal}>
+        <button className="create-btn" onClick={() => openModal(null)}>
           {" "}
           <AddCircleIcon /> &nbsp; Create Meme
         </button>
       </div>
-      <Memes search={searchField} />
+      <Memes openModal={openModal} search={searchField} />
       <div
         className={`${open ? "overlay" : "hidden"}`}
         onClick={open ? () => closeModal() : () => {}}
       ></div>
-      {open ? <MemeForm closeModal={closeModal} /> : ""}
+      {open ? (
+        <MemeForm
+          currentId={currentId}
+          setCurrentId={setCurrentId}
+          closeModal={closeModal}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

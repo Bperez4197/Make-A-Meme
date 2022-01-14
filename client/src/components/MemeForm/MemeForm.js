@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import FileBase from "react-file-base64";
-import { useDispatch } from "react-redux";
-import { createMeme } from "../../ducks/actions/meme-actions";
+import { useDispatch, useSelector } from "react-redux";
+import { createMeme, updateMeme } from "../../ducks/actions/meme-actions";
 
 import "./styles.scss";
 
-export default function MemeForm({ closeModal }) {
+export default function MemeForm({ closeModal, currentId, setCurrentId }) {
   const [memeData, setMemeData] = useState({
     creator: "",
     bottomText: "",
@@ -15,16 +15,28 @@ export default function MemeForm({ closeModal }) {
     tags: [],
     topText: "",
   });
+  const meme = useSelector((state) =>
+    currentId ? state.memes.find((meme) => meme._id === currentId) : null
+  );
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (meme) setMemeData(meme);
+  }, [meme]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createMeme(memeData));
+    if (currentId) {
+      dispatch(updateMeme(currentId, memeData));
+    } else {
+      dispatch(createMeme(memeData));
+    }
     clear();
     closeModal();
   };
 
   const clear = () => {
+    setCurrentId(null);
     setMemeData({
       creator: "",
       bottomText: "",

@@ -16,9 +16,10 @@ $nav-background-color: #161b22;
     width: 400px;
     border: 1px solid rgba(117, 115, 115, 0.582);
     border-radius: 9px;
-    margin: 0 auto;
     z-index: 6;
-    transform: translateY(-1150px);
+    position: fixed;
+    top: 225px;
+    left: 500px;
 
     .form-labels {
       display: flex;
