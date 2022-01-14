@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/memes";
+const url = "https://meme-maker-project.herokuapp.com/memes";
 
 export const fetchMemes = () => axios.get(url);
 export const createMeme = (memeData) => axios.post(url, memeData);

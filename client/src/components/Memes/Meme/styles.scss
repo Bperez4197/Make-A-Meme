@@ -77,3 +77,22 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .meme-data-container {
+    .meme-data {
+      h5,
+      h6 {
+        font-size: 16px;
+      }
+
+      h6 {
+        margin-right: 150px;
+      }
+
+      #tags {
+        padding-left: 10px;
+      }
+    }
+  }
+}

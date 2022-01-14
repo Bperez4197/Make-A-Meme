@@ -40,7 +40,8 @@ export const Meme = ({ memeData, openModal }) => {
             onClick={() => dispatch(likeMeme(memeData._id))}
           >
             <ThumbUpAltIcon />
-            &nbsp; Like &nbsp; {likeCount}
+            &nbsp; Likes &nbsp;{" "}
+            <span style={{ color: "green" }}>{likeCount}</span>
           </span>
           <span className="meme-btn" onClick={() => openModal(memeData._id)}>
             {" "}

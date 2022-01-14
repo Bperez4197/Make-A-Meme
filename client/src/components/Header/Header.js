@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import "./styles.scss";
 
-export default function Header() {
-  const [isHome, setIsHome] = useState(true);
-
+export default function Header({ isHome, setIsHome }) {
   return (
     <header>
       <h1>Make A Meme</h1>

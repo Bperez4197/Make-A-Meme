@@ -24,7 +24,6 @@ export default function MemesPage() {
 
   const closeModal = () => {
     setOpen(false);
-    setCurrentId(null);
   };
 
   useEffect(() => {
@@ -32,35 +31,40 @@ export default function MemesPage() {
   }, [currentId, dispatch]);
 
   return (
-    <div className="page-wrapper">
-      <div className="page-header">
-        <input
-          type="text"
-          placeholder="Seach by Creator..."
-          name="searchField"
-          id="searchField"
-          onChange={handleChange}
-          value={searchField}
-        />
-        <button className="create-btn" onClick={() => openModal(null)}>
-          {" "}
-          <AddCircleIcon /> &nbsp; Create Meme
-        </button>
+    <div>
+      <div className="page-wrapper">
+        <div className="page-header">
+          <input
+            type="text"
+            placeholder="Seach by Creator..."
+            name="searchField"
+            id="searchField"
+            onChange={handleChange}
+            value={searchField}
+          />
+          <button className="create-btn" onClick={() => openModal(null)}>
+            {" "}
+            <AddCircleIcon /> &nbsp; Create Meme
+          </button>
+        </div>
+        <Memes openModal={openModal} search={searchField} />
+        <div
+          className={`${open ? "overlay" : "hidden"}`}
+          onClick={open ? () => closeModal() : () => {}}
+        ></div>
+        {open ? (
+          <MemeForm
+            currentId={currentId}
+            setCurrentId={setCurrentId}
+            closeModal={closeModal}
+          />
+        ) : (
+          ""
+        )}
       </div>
-      <Memes openModal={openModal} search={searchField} />
-      <div
-        className={`${open ? "overlay" : "hidden"}`}
-        onClick={open ? () => closeModal() : () => {}}
-      ></div>
-      {open ? (
-        <MemeForm
-          currentId={currentId}
-          setCurrentId={setCurrentId}
-          closeModal={closeModal}
-        />
-      ) : (
-        ""
-      )}
+      <footer>
+        &#169; This site was built and is maintained by Bryce Perez
+      </footer>
     </div>
   );
 }

@@ -36,7 +36,7 @@ export default function MemeForm({ closeModal, currentId, setCurrentId }) {
   };
 
   const clear = () => {
-    setCurrentId(null);
+    // setCurrentId(null);
     setMemeData({
       creator: "",
       bottomText: "",
@@ -116,7 +116,7 @@ export default function MemeForm({ closeModal, currentId, setCurrentId }) {
             placeholder="tags for your meme"
             value={memeData.tags}
             onChange={(e) => {
-              console.log(memeData);
+              // console.log(memeData);
               return setMemeData({
                 ...memeData,
                 tags: e.target.value.split(","),

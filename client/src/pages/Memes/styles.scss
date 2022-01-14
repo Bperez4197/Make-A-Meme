@@ -4,6 +4,8 @@ $font-color: rgba(240, 246, 252, 0.829);
 $btn-background: rgba(17, 116, 17, 0.404);
 $btn-border-color: rgba(144, 238, 144, 0.541);
 $btn-hover-background: rgba(5, 146, 5, 0.801);
+$nav-text-color: rgba(240, 246, 252, 0.911);
+$nav-background-color: #161b22;
 
 .page-wrapper {
   display: flex;
@@ -13,6 +15,7 @@ $btn-hover-background: rgba(5, 146, 5, 0.801);
   font-family: $font;
   color: $font-color;
   font-weight: $main-font-weight;
+  margin-bottom: 100px;
 
   .page-header {
     display: flex;
@@ -69,5 +72,36 @@ $btn-hover-background: rgba(5, 146, 5, 0.801);
     left: 0;
     background: rgba(0, 0, 0, 0.8);
     z-index: 4;
+  }
+}
+
+footer {
+  height: 100px;
+  width: 100%;
+  background-color: $nav-background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .page-wrapper {
+    .page-header {
+      #searchField {
+        font-size: 14px;
+        &::placeholder {
+          font-size: 14px;
+        }
+      }
+
+      .create-btn {
+        font-size: 14px;
+        text-align: center;
+      }
+    }
+  }
+
+  footer {
+    font-size: 12px;
   }
 }
