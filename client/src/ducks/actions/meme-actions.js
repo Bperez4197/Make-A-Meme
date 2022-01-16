@@ -1,6 +1,7 @@
 import * as api from "../../api/memes-api";
 import { FETCH_ALL, UPDATE, DELETE, CREATE } from "../../constants/actionTypes";
 
+// Actions are functions we can use in the view and allow users to use through the ui. They get data from the front end user by passing them in during the function call, make the api call to the correct backend url, then dispatch an action with a type and payload to our reducer which decides what to return to the view. We can call these action on the view with the useDispatch hook.
 export const getAllMemes = () => async (dispatch) => {
   try {
     const { data } = await api.fetchMemes();

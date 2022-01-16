@@ -9,8 +9,10 @@ import reducers from "./ducks/reducers";
 
 import "./index.css";
 
+// create a store to house our state, pass it our reducers and middleware as specified in docs
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
+// wrap our app in our store provider and browser router
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

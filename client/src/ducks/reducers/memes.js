@@ -1,5 +1,6 @@
 import { FETCH_ALL, UPDATE, DELETE, CREATE } from "../../constants/actionTypes";
 
+// reducers take a state and an action(type,payload) as arguments and decide what state to return to the view
 export default (memes = [], action) => {
   switch (action.type) {
     case UPDATE:
